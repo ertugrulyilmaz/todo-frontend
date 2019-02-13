@@ -1,0 +1,20 @@
+.login-page .ant-card-head-title {
+  text-align: center;
+}
+
+.login-page .ant-card-bordered {
+  border: 0;
+}
+
+.login-page .ant-card {
+  box-shadow: 0 6px 8px 0 rgba(0, 0, 0, .24),
+    0 17px 50px 0 rgba(0, 0, 0, .19);
+}
+
+.login-page .login-form-forgot {
+  float: right;
+}
+
+.login-page .login-form-button {
+  width: 100%;
+}

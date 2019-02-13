@@ -1,12 +1,27 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
-import './index.css';
+import { render } from 'react-dom';
+import { Provider } from 'mobx-react';
 import App from './App';
+import UserStore from './stores/UserStore';
+import CommonStore from './stores/CommonStore';
+import TodoStore from './stores/TodoStore';
 import * as serviceWorker from './serviceWorker';
 
-ReactDOM.render(<App />, document.getElementById('root'));
+import './index.css';
 
-// If you want your app to work offline and load faster, you can change
-// unregister() to register() below. Note this comes with some pitfalls.
-// Learn more about service workers: http://bit.ly/CRA-PWA
+require('./services/config');
+
+const stores = {
+  userStore: UserStore,
+  commonStore: CommonStore,
+  todoStore: TodoStore
+};
+
+render(
+  <Provider {...stores}>
+    <App />
+  </Provider>,
+  document.getElementById('root')
+);
+
 serviceWorker.unregister();

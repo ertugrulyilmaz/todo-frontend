@@ -1,0 +1,13 @@
+{
+  "copyright": "Urheberrechte",
+  "login.title": "Anmelden",
+  "login.email": "E-Mail-Adresse oder Mobiltelefonnummer",
+  "login.password": "Passwort",
+  "register.title": "Konto erstellen",
+  "top.menu.home": "Hous",
+  "top.menu.logout": "Ausloggen",
+  "todo.add.new": "Neuen Todo hinzufügen",
+  "todo.filter.pending": "Anstehend",
+  "todo.filter.completed": "Abgeschlossen",
+  "todo.filter.all": "Alles"
+}

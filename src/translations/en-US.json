@@ -1,0 +1,9 @@
+{
+  "copyright": "Copyright",
+  "top.menu.home": "Home",
+  "top.menu.logout": "Logout",
+  "todo.add.new": "Add new todo",
+  "todo.filter.pending": "Pending",
+  "todo.filter.completed": "Completed",
+  "todo.filter.all": "All"
+}
