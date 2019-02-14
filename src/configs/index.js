@@ -1,9 +1,9 @@
 const dev = {
-  member: { endpoint: 'http://localhost:8081' }
+  user: { endpoint: 'http://localhost:8888/v1/auth' }
 };
 
 const prod = {
-  member: { endpoint: 'http://user.todoapp.io' }
+  user: { endpoint: 'http://user.todoapp.io' }
 };
 
 const config = process.env.REACT_APP_STAGE === 'production' ? prod : dev;

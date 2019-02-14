@@ -13,6 +13,7 @@ import {
   Col
 } from 'antd';
 import { observer } from 'mobx-react';
+import { alert, history } from '../../helpers';
 import './index.css';
 
 @observer(['userStore'])
@@ -34,9 +35,26 @@ class RegisterPage extends React.Component {
 
     this.props.form.validateFields((err, values) => {
       if (!err) {
-        this.props.userStore.register(values);
-
         this.setState({ loading: true });
+
+        this.props.userStore
+          .register(values)
+          .then(res => {
+            if (res.data) {
+              history.push('/');
+
+              alert.success('Registration successful.');
+            } else {
+              alert.error('Something bad happened!');
+
+              this.setState({ loading: false });
+            }
+          })
+          .catch(error => {
+            alert.error(error.toString());
+
+            this.setState({ loading: false });
+          });
       }
     });
   };

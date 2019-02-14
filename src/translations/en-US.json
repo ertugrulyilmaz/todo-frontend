@@ -1,5 +1,9 @@
 {
   "copyright": "Copyright",
+  "login.title": "Login - TodoAPP",
+  "login.email": "Email",
+  "login.password": "Password",
+  "register.title": "Register - TodoAPP",
   "top.menu.home": "Home",
   "top.menu.logout": "Logout",
   "todo.add.new": "Add new todo",

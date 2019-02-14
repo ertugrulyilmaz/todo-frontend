@@ -1,7 +1,6 @@
 import { action, computed, observable } from 'mobx';
-import { alert } from '../helpers';
 import { userService } from '../services';
-import { history } from '../helpers';
+import { alert, history } from '../helpers';
 
 class UserStore {
   @observable profile = JSON.parse(localStorage.getItem('profile'));
@@ -10,15 +9,17 @@ class UserStore {
   check() {
     let token = localStorage.getItem('token');
     if (token) {
-      // userService
-      //   .check(token)
-      //   .then(() => {})
-      //   .catch(error => {
-      //     alert.error('Your session time is up. Please login again.');
-      //     localStorage.removeItem('token');
-      //     localStorage.removeItem('profile');
-      //     history.push('/');
-      //   });
+      userService
+        .check(token)
+        .then(() => {})
+        .catch(error => {
+          alert.error('Your session time is up. Please login again.');
+
+          localStorage.removeItem('token');
+          localStorage.removeItem('profile');
+
+          history.push('/');
+        });
     } else {
       history.push('/');
     }
@@ -36,6 +37,7 @@ class UserStore {
         this.setProfile(response.data);
 
         history.push('/admin');
+
         alert.success('Welcome to TodoAPP');
       } else {
         this.logout(email);
@@ -54,14 +56,7 @@ class UserStore {
 
   @action
   register(user) {
-    userService
-      .register(user)
-      .then(() => {
-        history.push('/');
-
-        alert.success('Registration successful.');
-      })
-      .catch(error => alert.error(error.toString()));
+    return userService.register(user);
   }
 
   @action
@@ -72,7 +67,7 @@ class UserStore {
   @computed
   get fullName() {
     if (this.profile) {
-      let { firstName, lastName } = this.profile;
+      let { firstName, lastName } = this.profile.profile;
 
       return `${firstName} ${lastName}`;
     } else {

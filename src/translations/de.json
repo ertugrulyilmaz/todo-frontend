@@ -1,9 +1,9 @@
 {
   "copyright": "Urheberrechte",
-  "login.title": "Anmelden",
+  "login.title": "Anmelden - TodoAPP",
   "login.email": "E-Mail-Adresse oder Mobiltelefonnummer",
   "login.password": "Passwort",
-  "register.title": "Konto erstellen",
+  "register.title": "Konto erstellen - TodoAPP",
   "top.menu.home": "Hous",
   "top.menu.logout": "Ausloggen",
   "todo.add.new": "Neuen Todo hinzufügen",
