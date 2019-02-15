@@ -28,7 +28,7 @@ class UserStore {
   @action
   login(email, password) {
     return userService.login({ email, password }).then(response => {
-      let { email, token } = response.data;
+      let { token } = response.data;
 
       if (token) {
         localStorage.setItem('token', token);
@@ -40,7 +40,10 @@ class UserStore {
 
         alert.success('Welcome to TodoAPP');
       } else {
-        this.logout(email);
+        localStorage.removeItem('token');
+        localStorage.removeItem('profile');
+
+        throw new Error('Email or Password mismatch. Please try again.');
       }
     });
   }
@@ -50,7 +53,8 @@ class UserStore {
     userService.logout().then(() => {
       localStorage.removeItem('token');
       localStorage.removeItem('profile');
-      history.push('/login');
+
+      history.push('/');
     });
   }
 

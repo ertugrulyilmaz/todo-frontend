@@ -50,8 +50,6 @@ export default class HomePage extends Component {
   render() {
     const { filter } = this.state;
     const todos = this.props.todoStore.getTodos;
-    const todoAddNew = <FormattedMessage id="todo.add.new" />;
-    console.log(todoAddNew);
 
     return (
       <Row
@@ -102,9 +100,9 @@ export default class HomePage extends Component {
               dataSource={todos.filter(todo => {
                 if (filter === 'all') return true;
                 else if (filter === 'completed') {
-                  return todo.checked;
+                  return todo.status === 'COMPLETED';
                 } else {
-                  return !todo.checked;
+                  return todo.status === 'PENDING';
                 }
               })}
               locale={{ emptyText: 'Empty Todo' }}
@@ -113,15 +111,15 @@ export default class HomePage extends Component {
                   <Checkbox
                     onChange={this.toggleTodo}
                     value={todo.id}
-                    checked={todo.checked}
+                    checked={todo.status === 'COMPLETED'}
                   >
                     <span
                       className={classnames({
                         'todo-description-wrapper': true,
-                        checked: todo.checked
+                        checked: todo.status === 'COMPLETED'
                       })}
                     >
-                      {todo.value}
+                      {todo.item}
                     </span>
                   </Checkbox>
 
